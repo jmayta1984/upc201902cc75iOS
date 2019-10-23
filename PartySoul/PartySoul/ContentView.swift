@@ -10,25 +10,25 @@ import SwiftUI
 
 let apiUrlGeekJoke = "https://geek-jokes.sameerkumar.website/api"
 let urlGeekJoke = URL(string: apiUrlGeekJoke)!
-let sessionGeekJoke = URLSession.shared
 
 let apiUrlDadJoke = "https://icanhazdadjoke.com/"
 let urlDadJoke = URL(string: apiUrlDadJoke)!
-let sessionDadJoke = URLSession.shared
 
-struct Joke: Decodable {
-    let id: String
+let session = URLSession.shared
+
+struct Joke: Identifiable, Decodable {
+    let id = UUID()
     var joke: String
 }
 
 class JokeViewModel: ObservableObject {
-    @Published var joke = Joke(id: "", joke: "")
+    @Published var jokes = [Joke]()
     
     func getGeekJoke() {
-        sessionDadJoke.dataTask(with: urlGeekJoke){
+        session.dataTask(with: urlGeekJoke){
             (data, response, error) in
             DispatchQueue.main.async {
-                self.joke.joke = String(decoding: data!, as: UTF8.self)
+                self.jokes.append(Joke(joke: String(decoding: data!, as: UTF8.self)))
             }
         }.resume()
     }
@@ -37,14 +37,12 @@ class JokeViewModel: ObservableObject {
         var request = URLRequest(url: urlDadJoke)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        sessionDadJoke.dataTask(with: request){
+        session.dataTask(with: request){
             (data, response, error) in
             DispatchQueue.main.async {
-                do {
-                    self.joke = try JSONDecoder().decode(Joke.self, from: data!)
-                } catch (let jsonError) {
-                    print(jsonError)
-                }
+                
+                self.jokes.append( try! JSONDecoder().decode(Joke.self, from: data!))
+                
             }
         }.resume()
     }
@@ -56,15 +54,19 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            Text(jokeVM.joke.joke)
-                .navigationBarTitle("Jokes")
-                .navigationBarItems(
-                    leading: Button(action: {
-                        self.jokeVM.getGeekJoke()
-                    }, label: {Text("Geek Joke")}),
-                    trailing: Button(action: {
-                        self.jokeVM.getDadJoke()
-                    }, label: {Text("Dad Joke")}))
+            List{
+                ForEach(jokeVM.jokes) {joke in
+                    Text(joke.joke)
+                }
+            }
+            .navigationBarTitle("Jokes")
+            .navigationBarItems(
+                leading: Button(action: {
+                    self.jokeVM.getGeekJoke()
+                }, label: {Text("Geek Joke")}),
+                trailing: Button(action: {
+                    self.jokeVM.getDadJoke()
+                }, label: {Text("Dad Joke")}))
         }
     }
 }

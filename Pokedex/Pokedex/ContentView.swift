@@ -24,13 +24,24 @@ struct PokemonResponse: Decodable {
 class PokemonViewModel: ObservableObject {
     @Published var pokemons = [Pokemon]()
     
-    func getPokemons() {
+    func fetchPokemon() {
         session.dataTask(with: url) {
             (data, response, error) in
             DispatchQueue.main.async {
                 self.pokemons = try! JSONDecoder().decode(PokemonResponse.self, from: data!).results
             }
         }.resume()
+    }
+}
+
+struct PokemonRowView: View {
+    let pokemon: Pokemon
+    var body: some View {
+        HStack(alignment: .center   ) {
+            Text(pokemon.name.capitalized)
+            
+            //Image("pokeball").resizable().frame(width: 32, height: 32).colorMultiply(.gray)
+        }
     }
 }
 
@@ -41,11 +52,11 @@ struct ContentView: View {
         NavigationView{
             List{
                 ForEach(pokemonVM.pokemons) { pokemon in
-                    Text(pokemon.name)
+                    PokemonRowView(pokemon: pokemon)
                 }
-            }.navigationBarTitle(Text("Pokedex"))
+            }.navigationBarTitle(Text("Pokemon"))
         }.onAppear{
-            self.pokemonVM.getPokemons()
+            self.pokemonVM.fetchPokemon()
         }
     }
 }
