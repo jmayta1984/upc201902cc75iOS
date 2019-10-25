@@ -57,7 +57,7 @@ struct ContentView: View {
             List{
                 ForEach(jokeVM.jokes) {joke in
                     Text(joke.joke)
-                }
+                }.onDelete(perform: delete)
             }
             .navigationBarTitle("Jokes")
             .navigationBarItems(
@@ -68,6 +68,11 @@ struct ContentView: View {
                     self.jokeVM.getDadJoke()
                 }, label: {Text("Dad Joke")}))
         }
+    }
+    
+    func delete(at offsets: IndexSet)  {
+        self.jokeVM.jokes.remove(atOffsets: offsets)
+        
     }
 }
 
