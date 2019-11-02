@@ -21,8 +21,10 @@ struct ContentView: View {
                     HStack {
                         TextField("Type new task", text: $textTask)
                         Button(action: {
-                            self.taskVM.addTask(textTask: self.textTask)
-                            self.textTask = ""
+                            if self.textTask != "" {
+                                self.taskVM.addTask(textTask: self.textTask)
+                                self.textTask = ""
+                            }
                         }){
                             Image(systemName: "plus")
                         }
@@ -39,7 +41,7 @@ struct ContentView: View {
                         self.taskVM.deleteTask(index: indexSet.first!)
                     }
                 }
-            }.onAppear{self.taskVM.getTasks()}
+            }.navigationBarTitle("Tasks").onAppear{self.taskVM.getTasks()}
         }
     }
 }
