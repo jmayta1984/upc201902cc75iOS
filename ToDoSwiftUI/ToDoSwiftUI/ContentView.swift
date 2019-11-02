@@ -29,8 +29,6 @@ struct ContentView: View {
                             Image(systemName: "plus")
                         }
                     }
-                    
-                    
                 }
                 Section(header: Text("Tasks")){
                     ForEach(self.taskVM.tasks) {
