@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B58AFFA7236E323B0060CABD /* PartySoul.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B58AFFA5236E323B0060CABD /* PartySoul.xcdatamodeld */; };
 		B5A72A23235AD5A200D02FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A72A22235AD5A200D02FB4 /* AppDelegate.swift */; };
 		B5A72A25235AD5A200D02FB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A72A24235AD5A200D02FB4 /* SceneDelegate.swift */; };
 		B5A72A27235AD5A200D02FB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A72A26235AD5A200D02FB4 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B58AFFA6236E323B0060CABD /* PartySoul.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartySoul.xcdatamodel; sourceTree = "<group>"; };
 		B5A72A1F235AD5A200D02FB4 /* PartySoul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartySoul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A72A22235AD5A200D02FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5A72A24235AD5A200D02FB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				B5A72A2D235AD5A300D02FB4 /* LaunchScreen.storyboard */,
 				B5A72A30235AD5A300D02FB4 /* Info.plist */,
 				B5A72A2A235AD5A300D02FB4 /* Preview Content */,
+				B58AFFA5236E323B0060CABD /* PartySoul.xcdatamodeld */,
 			);
 			path = PartySoul;
 			sourceTree = "<group>";
@@ -103,7 +106,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1110;
-				ORGANIZATIONNAME = Cibertec;
+				ORGANIZATIONNAME = UPC;
 				TargetAttributes = {
 					B5A72A1E235AD5A200D02FB4 = {
 						CreatedOnToolsVersion = 11.1;
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A72A23235AD5A200D02FB4 /* AppDelegate.swift in Sources */,
+				B58AFFA7236E323B0060CABD /* PartySoul.xcdatamodeld in Sources */,
 				B5A72A25235AD5A200D02FB4 /* SceneDelegate.swift in Sources */,
 				B5A72A27235AD5A200D02FB4 /* ContentView.swift in Sources */,
 			);
@@ -284,16 +288,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PartySoul/Preview Content\"";
+				DEVELOPMENT_TEAM = 8468U436K8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PartySoul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pe.edu.cibertec.PartySoul;
+				PRODUCT_BUNDLE_IDENTIFIER = pe.edu.upc.PartySoul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -303,16 +310,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PartySoul/Preview Content\"";
+				DEVELOPMENT_TEAM = 8468U436K8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PartySoul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pe.edu.cibertec.PartySoul;
+				PRODUCT_BUNDLE_IDENTIFIER = pe.edu.upc.PartySoul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -340,6 +350,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B58AFFA5236E323B0060CABD /* PartySoul.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B58AFFA6236E323B0060CABD /* PartySoul.xcdatamodel */,
+			);
+			currentVersion = B58AFFA6236E323B0060CABD /* PartySoul.xcdatamodel */;
+			path = PartySoul.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B5A72A17235AD5A200D02FB4 /* Project object */;
 }
