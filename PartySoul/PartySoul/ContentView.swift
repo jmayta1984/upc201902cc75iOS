@@ -75,6 +75,7 @@ class JokeViewModel: ObservableObject {
             (data, response, error) in
             DispatchQueue.main.async {
                 self.jokes.append(Joke(joke: String(decoding: data!, as: UTF8.self)))
+                
             }
         }.resume()
     }
