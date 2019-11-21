@@ -15,7 +15,6 @@ struct FavoriteRowView: View {
     var body: some View {
         VStack{
             Text(favorite!.title!)
-
         }
 
     }

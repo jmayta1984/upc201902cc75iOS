@@ -26,7 +26,6 @@ struct MovieRowView: View {
             Spacer()
             Button(action:{
                 self.favoriteVM.addFavorite(title: self.movie!.title)
-                self.favoriteVM.getAllFavorites()
             }){
                 Image(systemName: "plus")
             }

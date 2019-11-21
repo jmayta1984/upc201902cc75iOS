@@ -19,18 +19,10 @@ class FavoriteViewModel: ObservableObject{
         let favorite = Favorite(context: context)
         favorite.title = title
         favorite.date = Date()
-        saveContext()
-        
-        
+        favorites.append(favorite)
+    
     }
     
-    func getAllFavorites(){
-        do {
-            self.favorites = try context.fetch(Favorite.fetchRequest())
-        } catch (let error){
-            print(error)
-        }
-    }
     
     func deleteFavorite(position: Int){
         let favorite = favorites[position]
@@ -40,7 +32,10 @@ class FavoriteViewModel: ObservableObject{
     }
     
     init (){
-        getAllFavorites()
-        
+        do {
+                 self.favorites = try context.fetch(Favorite.fetchRequest())
+             } catch (let error){
+                 print(error)
+             }
     }
 }
